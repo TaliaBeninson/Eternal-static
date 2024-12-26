@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="he">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memorial Profile - Static Example</title>
+    <link rel="stylesheet" href="./../../pages/profile/profile.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <div class="top-right">
+        <p><strong class="login-button" data-en="Edit Profile" data-he="ערוך פרופיל">ערוך פרופיל </strong></p>
+    </div>
+
+    <div class="background-buttons">
+        <button class="back-btn" onclick="goBack()">
+            <i class="bi bi-arrow-left-short"></i>
+        </button>
+        <button class="language-btn" id="hebrewBtn" onclick="hideTranslateButtons()">
+            <img src="./../../resources/img/Hebrew-Icon.png" alt="Hebrew" class="flag-icon">
+        </button>
+        <button class="language-btn" id="englishBtn" onclick="showTranslateButtons()">
+            <img src="./../../resources/img/English-Icon.png" alt="English" class="flag-icon">
+        </button>
+    </div>
+
+    <div class="profile-container">
+        <div class="profile-header">
+            <div class="background-photo">
+                <img src="./../../resources/img/background.jpg" alt="Background">
+            </div>
+            <div class="profile-picture">
+                <img src="../example_page/img/profile.png" alt="Profile Picture">
+            </div>
+            <div id="exampleNotice" class="example-notice" data-en="Profile for Demonstration Use Only"
+                data-he="הפרופיל להמחשה בלבד">
+                הפרופיל להמחשה בלבד
+            </div>
+            <div class="profile-details">
+                <h1>נתנאל אלקים</h1>
+                <p>1947 - 2024</p>
+            </div>
+        </div>
+
+        <div class="profile-buttons">
+            <button class="profile-button" data-en='<i class="bi bi-file-person"></i> Biography'
+                data-he='<i class="bi bi-file-person"></i> ביוגרפיה' onclick="scrollToSection('biography')">
+                <i class="bi bi-file-person"></i> ביוגרפיה
+            </button>
+            <button class="profile-button" data-en='<i class="bi bi-journal-bookmark"></i> Memories'
+                data-he='<i class="bi bi-journal-bookmark"></i> זכרונות' onclick="scrollToSection('memory-wall')">
+                <i class="bi bi-journal-bookmark"></i> זכרונות
+            </button>
+            <button class="profile-button" data-en='<i class="bi bi-book"></i> Tehilim'
+                data-he='<i class="bi bi-book"></i> תהילים' onclick="scrollToSection('tehilim')">
+                <i class="bi bi-book"></i> תהילים
+            </button>
+        </div>
+
+
+
+        <div class="profile-content">
+            <div class="gallery">
+                <h2 class="gallery-title" data-en="Gallery" data-he="גלריה">גלריה</h2>
+                <div class="gallery-controls">
+                    <button id="arrowViewToggle" class="toggle-view-button">
+                        <i class="bi bi-arrow-left-right"></i>
+                    </button>
+                    <button id="gridViewToggle" class="toggle-view-button">
+                        <i class="bi bi-grid-fill"></i>
+                    </button>
+                </div>
+                <div id="imageGallery" class="gallery-scroll single-view">
+                    <button class="arrow left-arrow">&#10094;</button>
+                    <img src="./../example_page/img/img1.jpg" alt="Gallery Image">
+                    <img src="./../example_page/img/img2.JPG" alt="Gallery Image">
+                    <img src="./../example_page/img/img3.JPG" alt="Gallery Image">
+                    <img src="./../example_page/img/img4.JPG" alt="Gallery Image">
+                    <img src="./../example_page/img/img5.JPG" alt="Gallery Image">
+                    <img src="./../example_page/img/img6.JPG" alt="Gallery Image">
+                    <img src="./../example_page/img/img7.JPG" alt="Gallery Image">
+                    <img src="./../example_page/img/img8.JPG" alt="Gallery Image">
+                    <img src="./../example_page/img/img9.JPG" alt="Gallery Image">
+
+
+
+                    <button class="arrow right-arrow">&#10095;</button>
+                </div>
+                <!-- Video Gallery -->
+                <div id="videoGallery" class="gallery-scroll single-view">
+                    <button class="arrow left-arrow" onclick="prevVideo()">&#10094;</button>
+                    <video src="./../example_page/vid/vid1.mp4" controls muted></video>
+                    <video src="./../example_page/vid/vid2.mp4" controls muted></video>
+                    <video src="./../example_page/vid/vid3.mp4" controls muted></video>
+                    <video src="./../example_page/vid/vid4.mp4" controls muted></video>
+                    <button class="arrow right-arrow" onclick="nextVideo()">&#10095;</button>
+                </div>
+            </div>
+
+
+            <div id="biography">
+                <div class="biography-container">
+                    <h3 class="biography-title" data-en="Biography" data-he="ביוגרפיה">ביוגרפיה</h3>
+                    <p id="biographyText">
+                        <!-- Initial Hebrew text -->
+                        <span class="text-section"
+                            data-original="נתנאל אלקים נולד בישראל בשנת 1982. הוא גדל בעיירה קטנה בגליל, מוקף בטבע ובנוף ההררי. כבר בילדותו גילה כישרון יוצא דופן בתחום המוזיקה וניגן במספר כלי נגינה. עם השנים, פיתח אהבה מיוחדת לגיטרה והחל ליצור מוזיקה מקורית שהושפעה מהשילוב בין מסורת למודרניות."
+                            data-translation="Nataniel Elkayam was born in Israel in 1982. He grew up in a small town in Galilee, surrounded by nature and mountainous landscapes. Already in his childhood, he discovered a unique talent for music and played several musical instruments. Over the years, he developed a special love for the guitar and began creating original music influenced by a blend of tradition and modernity.">
+                            נתנאל אלקים נולד בישראל בשנת 1982. הוא גדל בעיירה קטנה בגליל, מוקף בטבע ובנוף ההררי. כבר
+                            בילדותו
+                            גילה כישרון יוצא דופן בתחום המוזיקה וניגן במספר כלי נגינה. עם השנים, פיתח אהבה מיוחדת לגיטרה
+                            והחל ליצור מוזיקה מקורית שהושפעה מהשילוב בין מסורת למודרניות.
+                        </span>
+                        <span class="text-section" id="moreText" style="display: none;"
+                            data-original="עם הזמן, נתנאל ייסד סטודיו עצמאי להפקת מוזיקה שבו עבד עם אמנים מכל רחבי הארץ. הוא התפרסם בזכות יכולתו ללכוד רגעים ייחודיים ורגשות דרך המוזיקה, והפך לדמות בולטת בתעשיית המוזיקה הישראלית. עבודתו שילבה יצירתיות טכנית עם רגישות אמנותית, והוא היה למנטור למוזיקאים צעירים רבים. נתנאל זכור לא רק בזכות המוזיקה שיצר, אלא גם בזכות טוב ליבו ונכונותו לעזור לכל אדם. הוא הותיר אחריו מורשת של אהבה למוזיקה, משפחה ותרומה לקהילה. זכרו של נתנאל יישאר בליבם של משפחתו, חבריו וכל מי שהכיר אותו. המוזיקה שלו תמשיך להדהד ולגעת בלבבות רבים. יהי זכרו ברוך."
+                            data-translation="Over time, Nataniel founded an independent music production studio, where he worked with artists from all over the country. He became famous for his ability to capture unique moments and emotions through music and became a prominent figure in the Israeli music industry. His work combined technical creativity with artistic sensitivity, and he mentored many young musicians. Nataniel is remembered not only for the music he created but also for his kindness and willingness to help everyone. He left behind a legacy of love for music, family, and community contribution. His memory will remain in the hearts of his family, friends, and all who knew him. His music will continue to resonate and touch many hearts. Blessed be his memory.">
+                            עם הזמן, נתנאל ייסד סטודיו עצמאי להפקת מוזיקה שבו עבד עם אמנים מכל רחבי הארץ. הוא התפרסם
+                            בזכות
+                            יכולתו ללכוד רגעים ייחודיים ורגשות דרך המוזיקה, והפך לדמות בולטת בתעשיית המוזיקה הישראלית.
+                            עבודתו שילבה יצירתיות טכנית עם רגישות אמנותית, והוא היה למנטור למוזיקאים צעירים רבים. נתנאל
+                            זכור
+                            לא רק בזכות המוזיקה שיצר, אלא גם בזכות טוב ליבו ונכונותו לעזור לכל אדם. הוא הותיר אחריו
+                            מורשת של
+                            אהבה למוזיקה, משפחה ותרומה לקהילה. זכרו של נתנאל יישאר בליבם של משפחתו, חבריו וכל מי שהכיר
+                            אותו.
+                            המוזיקה שלו תמשיך להדהד ולגעת בלבבות רבים. יהי זכרו ברוך.
+                        </span>
+                    </p>
+                    <button id="readMoreBtn" class="read-more-button" data-en='Read more' data-he='קרא עוד'>
+                        קרא עוד
+                    </button>
+                    <button class="translate-btn" onclick="translateBiography()">Translate</button>
+
+                    <button id="scrollToTopBtn" class="scroll-to-top">
+                        <i class="bi bi-arrow-up-short"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Memory Wall Section -->
+            <div id="memory-wall" class="container memory-wall-container">
+                <div class="memory-entry">
+                    <div class="memory-date">20/08/2024</div>
+                    <p class="memory-text"
+                        data-original="נתנאל היה חבר אמיתי, שתמיד ידע לשמח את כולנו עם חוש ההומור המיוחד שלו והאהבה הגדולה למוזיקה. הוא תמיד היה שם עם עצה טובה וכתף תומכת, והאולפן מרגיש ריק בלעדיו."
+                        data-translation="Nataniel was a true friend, always bringing joy with his unique sense of humor and great love for music. He was always there with good advice and a supportive shoulder, and the studio feels empty without him.">
+                        נתנאל היה חבר אמיתי, שתמיד ידע לשמח את כולנו עם חוש ההומור המיוחד שלו והאהבה הגדולה למוזיקה. הוא
+                        תמיד היה שם עם עצה טובה וכתף תומכת, והאולפן מרגיש ריק בלעדיו.
+                    </p>
+                    <button class="translate-btn" onclick="translateText(this)">Translate</button>
+                    <div class="memory-author">דן לוי</div>
+                </div>
+                <div class="memory-entry">
+                    <div class="memory-date">25/08/2024</div>
+                    <p class="memory-text"
+                        data-original="תמיד אזכור את השעות שהעברנו יחד ביצירת מוזיקה ושיחות על אמנות ומשפחה. נתנאל היה חבר קרוב ומדריך משמעותי עבורי, והוא תחסר לי מאוד."
+                        data-translation="I will always remember the hours we spent creating music and talking about art and family. Nataniel was a close friend and an important mentor to me, and I will miss him dearly.">
+                        תמיד אזכור את השעות שהעברנו יחד ביצירת מוזיקה ושיחות על אמנות ומשפחה. נתנאל היה חבר קרוב ומדריך
+                        משמעותי עבורי, והוא תחסר לי מאוד.
+                    </p>
+                    <button class="translate-btn" onclick="translateText(this)">Translate</button>
+                    <div class="memory-author">תמר כהן</div>
+                </div>
+                <div class="memory-entry">
+                    <div class="memory-date">30/08/2024</div>
+                    <p class="memory-text"
+                        data-original="היה לי הכבוד לעבוד עם נתנאל על הפקות מוזיקליות מדהימות. הוא הביא כל כך הרבה רגש וכישרון לכל פרויקט, וידע איך לגעת בלבבות של כל מי ששמע את עבודתו. הוא ישאיר חלל גדול בתעשייה ובחיים שלי."
+                        data-translation="I had the honor of working with Nataniel on amazing music productions. He brought so much emotion and talent to every project, and he knew how to touch the hearts of everyone who heard his work. He will leave a big void in the industry and in my life.">
+                        היה לי הכבוד לעבוד עם נתנאל על הפקות מוזיקליות מדהימות. הוא הביא כל כך הרבה רגש וכישרון לכל
+                        פרויקט,
+                        וידע איך לגעת בלבבות של כל מי ששמע את עבודתו. הוא ישאיר חלל גדול בתעשייה ובחיים שלי.
+                    </p>
+                    <button class="translate-btn" onclick="translateText(this)">Translate</button>
+                    <div class="memory-author">רותם בן-צבי</div>
+                </div>
+            
+
+            <button class="write-memory-button" data-en='<i class="bi bi-pencil-square"></i> Share a Memory'
+                data-he='<i class="bi bi-pencil-square"></i> שיתוף זיכרון'>
+                <i class="bi bi-pencil-square"></i> שיתוף זיכרון
+            </button>
+
+</div>
+
+
+            <!-- Virtual Candles Section -->
+            <div class="virtual-candles">
+                <!-- Add fire animation background -->
+                <div class="candle-entry">
+                    <p><strong>🕯️ לאה לוי הדליקה נר ב-20/08/2024 🕯️</strong></p>
+                </div>
+                <div class="candle-entry">
+                    <p><strong>🕯️ דוד ברק הדליק נר ב-22/08/2024 🕯️</strong></p>
+                </div>
+                <div class="candle-entry">
+                    <p><strong>🕯️ שרה כהן הדליקה נר ב-25/08/2024 🕯️</strong></p>
+                </div>
+
+                <button class="light-candle-button" data-en='Light a Candle 🕯️'
+                    data-he='🕯️ הדליקו נר לזכרה'>
+                    </i> 🕯️ הדליקו נר לזכרה
+                </button>
+            </div>
+
+
+            <!-- Tehilim Section for נתנאל בן משה -->
+            <div id="tehilim" class="tehilim-container">
+                <h2>תהילים פרק קיט</h2>
+                <div id="tehilimContent" class="tehilim">
+
+                    <!-- Letter Nun (נ) -->
+                    <div class="tehilim-section">
+                        <p class="section-title"><strong>תהילים קיט - אות נ</strong></p>
+                        <p>
+                            נֵר-לְרַגְלִי דְבָרֶךָ, וְאוֹר לִנְתִיבָתִי.<br>
+                            נִשְׁבַּעְתִּי וָאֲקַיֵּמָה, לִשְׁמֹר מִשְׁפְּטֵי צִדְקֶךָ.<br>
+                            נַעֲנֵיתִי עַד-מְאֹד; יְהוָה, חַיֵּנִי כִּדְבָרֶךָ.<br>
+                            נְדוּבוֹת פִּי, רְצֵה-נָא יְהוָה; וּמִשְׁפָּטֶיךָ לַמְּדֵנִי.<br>
+                            נַפְשִׁי בְכַפִּי תָמִיד, וְתוֹרָתְךָ לֹא שָׁכָחְתִּי.<br>
+                            נָתְנוּ רְשָׁעִים פַּח לִי, וּמִפִּקּוּדֶיךָ לֹא תָעִיתִי.<br>
+                            נָחַלְתִּי עֵדְוֹתֶיךָ לְעוֹלָם: כִּי-שְׂשׂוֹן לִבִּי הֵמָּה.<br>
+                            נָטִיתִי לִבִּי, לַעֲשׂוֹת חֻקֶּיךָ; לְעוֹלָם, עֵקֶב.
+                        </p>
+                    </div>
+
+                    <div id="moreTehilim" style="display: none;">
+
+                        <!-- Letter Tav (ת) -->
+                        <div class="tehilim-section">
+                            <p class="section-title"><strong>תהילים קיט - אות ת</strong></p>
+                            <p>
+                                תִּקְרַב רִנָּתִי, לְפָנֶיךָ יְהוָה; כִּדְבָרְךָ הֲבִינֵנִי.<br>
+                                תָּבוֹא תְּחִנָּתִי, לְפָנֶיךָ; כְּאִמְרָתְךָ הַצִּילֵנִי.<br>
+                                תַּבַּעְנָה שְׂפָתַי, תְּהִלָּה: כִּי תְלַמְּדֵנִי, חֻקֶּיךָ.<br>
+                                תַּעַן לְשׁוֹנִי, אִמְרָתֶךָ: כִּי כָּל-מִצְו‍ֹתֶיךָ צֶדֶק.<br>
+                                תְּהִי יָדְךָ, לְעָזְרֵנִי: כִּי פִקּוּדֶיךָ בָחָרְתִּי.<br>
+                                תָּאַבְתִּי, לִישׁוּעָתְךָ יְהוָה; וְתוֹרָתְךָ, שַׁעֲשֻׁעָי.<br>
+                                תְּחִי נַפְשִׁי, וּתְהַלְלֶךָּ; וּמִשְׁפָּטֶיךָ יַעֲזְרֻנִי.<br>
+                                תָּעִיתִי, כְּשֶׂה אֹבֵד; בַּקֵּשׁ עַבְדֶּךָ-- כִּי מִצְו‍ֹתֶיךָ, לֹא שָׁכָחְתִּי.
+                            </p>
+                        </div>
+
+                        <!-- Second Nun (נ) -->
+                        <div class="tehilim-section">
+                            <p class="section-title"><strong>תהילים קיט - אות נ</strong></p>
+                            <p>
+                                נֵר-לְרַגְלִי דְבָרֶךָ, וְאוֹר לִנְתִיבָתִי.<br>
+                                נִשְׁבַּעְתִּי וָאֲקַיֵּמָה, לִשְׁמֹר מִשְׁפְּטֵי צִדְקֶךָ.<br>
+                                נַעֲנֵיתִי עַד-מְאֹד; יְהוָה, חַיֵּנִי כִּדְבָרֶךָ.<br>
+                                נְדוּבוֹת פִּי, רְצֵה-נָא יְהוָה; וּמִשְׁפָּטֶיךָ לַמְּדֵנִי.<br>
+                                נַפְשִׁי בְכַפִּי תָמִיד, וְתוֹרָתְךָ לֹא שָׁכָחְתִּי.<br>
+                                נָתְנוּ רְשָׁעִים פַּח לִי, וּמִפִּקּוּדֶיךָ לֹא תָעִיתִי.<br>
+                                נָחַלְתִּי עֵדְוֹתֶיךָ לְעוֹלָם: כִּי-שְׂשׂוֹן לִבִּי הֵמָּה.<br>
+                                נָטִיתִי לִבִּי, לַעֲשׂוֹת חֻקֶּיךָ; לְעוֹלָם, עֵקֶב.
+                            </p>
+                        </div>
+
+                        <!-- Letter Aleph (א) -->
+                        <div class="tehilim-section">
+                            <p class="section-title"><strong>תהילים קיט - אות א</strong></p>
+                            <p>
+                                אַשְׁרֵי תְמִימֵי-דָרֶךְ-- הַהֹלְכִים, בְּתוֹרַת יְהוָה.<br>
+                                אַשְׁרֵי, נֹצְרֵי עֵדֹתָיו; בְּכָל-לֵב יִדְרְשׁוּהוּ.<br>
+                                אַף לֹא-פָעֲלוּ עַוְלָה; בִּדְרָכָיו הָלָכוּ.<br>
+                                אַתָּה צִוִּיתָה פִקֻּדֶיךָ-- לִשְׁמֹר מְאֹד.<br>
+                                אַחֲלַי, יִכֹּנוּ דְרָכָי; לִשְׁמֹר חֻקֶּיךָ.<br>
+                                אָז לֹא-אֵבוֹשׁ; בְּהַבִּיטִי, אֶל-כָּל-מִצְו‍ֹתֶיךָ.<br>
+                                אוֹדְךָ, בְּיֹשֶׁר לֵבָב-- בְּלָמְדִי מִשְׁפְּטֵי צִדְקֶךָ.<br>
+                                אֶת-חֻקֶּיךָ, אֶשְׁמֹר; אַל-תַּעַזְבֵנִי עַד-מְאֹד.
+                            </p>
+                        </div>
+
+                        <!-- Letter Lamed (ל) -->
+                        <div class="tehilim-section">
+                            <p class="section-title"><strong>תהילים קיט - אות ל</strong></p>
+                            <p>
+                                לְעוֹלָם, יְהוָה-- דְּבָרְךָ, נִצָּב בַּשָּׁמָיִם.<br>
+                                לְדוֹר וָדוֹר, אֱמוּנָתֶךָ; כּוֹנַנְתָּ אֶרֶץ, וַתַּעֲמֹד.<br>
+                                לְמִשְׁפָּטֶיךָ, עָמְדוּ הַיּוֹם: כִּי הַכֹּל, עֲבָדֶיךָ.<br>
+                                לֻלֵי תוֹרָתְךָ שַׁעֲשֻׁעָי-- אָז, אָבַדְתִּי בְעָנְיִי.<br>
+                                לְעוֹלָם, לֹא-אֶשְׁכַּח פִּקּוּדֶיךָ: כִּי-בָם חִיִּיתָנִי.<br>
+                                לְךָ-אֲנִי, הוֹשִׁיעֵנִי: כִּי פִקּוּדֶיךָ, דָּרָשְׁתִּי.<br>
+                                לִי קִוּוּ, רְשָׁעִים-- לְאַבְּדֵנִי; עֵדֹתֶיךָ, אֶתְבּוֹנָן.
+                            </p>
+                        </div>
+
+                        <!-- Letter Bet (ב) -->
+                        <div class="tehilim-section">
+                            <p class="section-title"><strong>תהילים קיט - אות ב</strong></p>
+                            <p>
+                                בָּרוּךְ אַתָּה יְהוָה; לַמְּדֵנִי חֻקֶּיךָ.<br>
+                                בְּשִׂפְתֵי, סִפַּרְתִּי; כָּל-מִשְׁפְּטֵי פִיךָ.<br>
+                                בְּדֶרֶךְ עֵדוֹתֶיךָ, שָׂשׂתִּי; כְּעַל כָּל-חוֹשֶׁק.<br>
+                                בְּפִקּוּדֶיךָ, אָשִׂיחָה; וְאַבִּיטָה אֹרְחוֹתֶיךָ.<br>
+                                בְּחֻקּוֹתֶיךָ, אֶשְׁתַּעֲשָׁע; לֹא אֶשְׁכַּח דְּבָרֶךָ.
+                            </p>
+                        </div>
+
+                        <!-- Second Nun (נ) -->
+                        <div class="tehilim-section">
+                            <p class="section-title"><strong>תהילים קיט - אות נ</strong></p>
+                            <p>
+                                נֵר-לְרַגְלִי דְבָרֶךָ, וְאוֹר לִנְתִיבָתִי.<br>
+                                נִשְׁבַּעְתִּי וָאֲקַיֵּמָה, לִשְׁמֹר מִשְׁפְּטֵי צִדְקֶךָ.<br>
+                                נַעֲנֵיתִי עַד-מְאֹד; יְהוָה, חַיֵּנִי כִּדְבָרֶךָ.<br>
+                                נְדוּבוֹת פִּי, רְצֵה-נָא יְהוָה; וּמִשְׁפָּטֶיךָ לַמְּדֵנִי.<br>
+                                נַפְשִׁי בְכַפִּי תָמִיד, וְתוֹרָתְךָ לֹא שָׁכָחְתִּי.<br>
+                                נָתְנוּ רְשָׁעִים פַּח לִי, וּמִפִּקּוּדֶיךָ לֹא תָעִיתִי.<br>
+                                נָחַלְתִּי עֵדְוֹתֶיךָ לְעוֹלָם: כִּי-שְׂשׂוֹן לִבִּי הֵמָּה.<br>
+                                נָטִיתִי לִבִּי, לַעֲשׂוֹת חֻקֶּיךָ; לְעוֹלָם, עֵקֶב.
+                            </p>
+                        </div>
+
+                        <!-- Letter Mem (מ) -->
+                        <div class="tehilim-section">
+                            <p class="section-title"><strong>תהילים קיט - אות מ</strong></p>
+                            <p>
+                                מַה-אָהַבְתִּי, תוֹרָתֶךָ: כָּל-הַיּוֹם, הִיא שִׂיחָתִי.<br>
+                                מֵאוֹיְבַי, תְּחַכְּמֵנִי מִצְו‍ֹתֶךָ: כִּי לְעוֹלָם הִיא-לִי.<br>
+                                מִכָּל-מְלַמְּדַי, הִשְׂכַּלְתִּי: כִּי עֵדְוֹתֶיךָ, שִׂיחָה לִי.<br>
+                                מִזְּקֵנִים, אֶתְבּוֹנָן: כִּי פִקּוּדֶיךָ נָצָרְתִּי.<br>
+                                מִכָּל-דֶּרֶךְ רָע, כָּלִאתִי רַגְלָי: לְמַעַן, אֶשְׁמֹר דְּבָרֶךָ.<br>
+                                מִמִּשְׁפָּטֶיךָ, לֹא-סָרְתִּי: כִּי-אַתָּה הוֹרֵתָנִי.<br>
+                                מַה-נִּמְלְצוּ לְחִכִּי, אִמְרָתֶךָ: מִדְּבַשׁ לְפִי.
+                            </p>
+                        </div>
+
+                        <!-- Letter Shin (ש) -->
+                        <div class="tehilim-section">
+                            <p class="section-title"><strong>תהילים קיט - אות ש</strong></p>
+                            <p>
+                                שָׂרִים, רְדָפוּנִי חִנָּם; וּמִדְּבָרְךָ, פָּחַד לִבִּי.<br>
+                                שָׂשׂ אָנֹכִי, עַל-אִמְרָתֶךָ; כְּמוֹצֵא, שָׁלָל רָב.<br>
+                                שֶׁקֶר, שָׂנֵאתִי וַתּוֹעֲבָה; תּוֹרָתְךָ, אָהָבְתִּי.<br>
+                                שֶׁבַע בַּיּוֹם, הִלַּלְתִּיךָ: עַל מִשְׁפְּטֵי צִדְקֶךָ.<br>
+                                שָׁלוֹם רָב, לְאֹהֲבֵי תוֹרָתֶךָ; וְאֵין-לָמוֹ מִכְשׁוֹל.<br>
+                                שִׂבַּרְתִּי, לִישׁוּעָתְךָ יְהוָה; וּמִצְו‍ֹתֶיךָ עָשִׂיתִי.<br>
+                                שָׁמְרָה נַפְשִׁי, עֵדְוֹתֶיךָ; וָאֹהֲבֵם מְאֹד.
+                            </p>
+                        </div>
+
+                        <!-- Letter He (ה) -->
+                        <div class="tehilim-section">
+                            <p class="section-title"><strong>תהילים קיט - אות ה</strong></p>
+                            <p>
+                                הוֹרֵנִי יְהוָה, דֶּרֶךְ חֻקֶּיךָ; וְאֶצְּרֶנָּה עֵקֶב.<br>
+                                הֲבִינֵנִי, וְאֶצְּרָה תוֹרָתֶךָ; וְאֶשְׁמְרֶנָּה בְכָל-לֵב.<br>
+                                הַדְרִיכֵנִי, בִּנְתִיב מִצְו‍ֹתֶיךָ: כִּי-בוֹ חָפָצְתִּי.<br>
+                                הַט-לִבִּי, אֶל-עֵדְוֹתֶיךָ; וְאַל אֶל-בָּצַע.<br>
+                                הָעֲבֵר עֵינַי מֵרְאוֹת שָׁוְא; בִּדְרָכֶךָ חַיֵּנִי.<br>
+                                הָקֵם לְעַבְדְּךָ, אִמְרָתֶךָ: אֲשֶׁר, לְיִרְאָתֶךָ.<br>
+                                הַעֲבֵר חֶרְפָּתִי, אֲשֶׁר יָגֹרְתִּי: כִּי מִשְׁפָּטֶיךָ טוֹבִים.<br>
+                                הִנֵּה תָאַבְתִּי לְפִקּוּדֶיךָ; בְּצִדְקָתְךָ חַיֵּנִי.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <button id="readMoreBtnTehilim" class="read-more-button" data-en="Read more" data-he=" קרא עוד">
+                    קרא עוד
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>
+            <a href="../he/terms-conditions/index.html" data-he="תנאי שימוש" data-en="Terms of Service"
+                data-href-en="../en/terms-conditions/index.html" data-href-he="../he/terms-conditions/index.html">תנאי
+                שימוש</a> |
+            <a href="../he/privacy-policy/index.html" data-he="מדיניות פרטיות" data-en="Privacy Policy"
+                data-href-en="../en/privacy-policy/index.html" data-href-he="../he/privacy-policy/index.html">מדיניות
+                פרטיות</a> |
+            <span data-he="© 2024" data-en="© 2024">© 2024</span>
+        </p>
+    </div>
+
+    <script src="example.js"></script>
+    <script>
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+        function goBack() {
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                window.location.href = "./../he/index.html";
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>
