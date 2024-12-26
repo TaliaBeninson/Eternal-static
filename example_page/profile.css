@@ -1,0 +1,1168 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+    height: 100%;
+    
+}
+
+.profile-container {
+    max-width: 1000px;
+    margin: 70px auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.profile-header {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.background-photo {
+    position: relative;
+    width: 100%;
+    height: 300px; /* Default height for smaller screens */
+    overflow: hidden;
+}
+
+.background-photo img {
+    filter: brightness(0.7);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    clip-path: path('M0,250 C150,350 350,150 500,250 L500,00 L0,0 Z'); /* SVG path for the wave effect */
+    object-position: center; /* Ensure the image is centered */
+}
+
+.profile-details {
+    position: absolute;
+    top: 50px; /* Position the name towards the top */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 2; /* Ensures the text appears on top of everything */
+}
+
+.profile-details h1 {
+    margin: 0;
+    font-size: 28px; /* Font size for the name */
+    color: white;
+}
+
+.profile-picture {
+    position: absolute;
+    top: 120px; /* Adjust to align profile picture with the new background height */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 170px; /* Default size of the profile picture */
+    height: 170px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid white;
+    z-index: 3; /* Ensures the profile picture is on top */
+}
+
+.profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-details p {
+    position: absolute;
+    top: 260px; /* Position the years above the profile picture, within the wave */
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 5px 0 0;
+    font-size: 20px; /* Font size for the years */
+    color: rgb(87, 87, 87); /* Dark gray color for the years */
+    white-space: nowrap; /* Ensure the text stays on one line */
+    z-index: 3; /* Ensures the years appear above the background */
+}
+
+.profile-content {
+    margin-top: 20px; /* Adjust to ensure content below the picture is positioned correctly */
+    padding: 20px;
+    text-align: center;
+    color: black;
+}
+
+/* Media query for medium screens */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .background-photo {
+        height: 400px; /* Adjust height for medium screens */
+    }
+
+    .background-photo img {
+        object-fit: cover;
+        object-position: center; /* Ensure the image is centered */
+        width: 100%;
+        height: 100%;
+        clip-path: path('M0,250 C200,400 600,150 800,250 L800,00 L0,0 Z'); /* Adjusted SVG path for medium screens */
+    }
+
+    .profile-picture {
+        top: 120px; /* Adjust position for medium screens */
+        width: 240px; /* Slightly increase size of the profile picture */
+        height: 240px;
+    }
+
+    .profile-details p {
+        top: 340px; /* Adjust position of the years for medium screens */
+    }
+    
+}
+
+
+/* Media query for larger screens */
+@media (min-width: 1024px) {
+    .background-photo {
+        height: 400px; /* Increase height for larger screens */
+    }
+
+    .background-photo img {
+        object-fit: cover;
+        object-position: center; /* Ensure the image is centered */
+        width: 100%;
+        height: 100%;
+        clip-path: path('M0,300 C250,450 750,150 1000,300 L1000,00 L0,0 Z'); /* Adjusted SVG path for larger screens to retain wave */
+    }
+
+    .profile-picture {
+        top: 100px; /* Adjust position for larger screens */
+        width: 260px; /* Increase size of the profile picture */
+        height: 260px;
+    }
+
+    .profile-details p {
+        top: 360px; /* Adjust position of the years for larger screens */
+    }
+
+}
+
+
+
+.profile-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 70px;
+}
+
+.profile-button {
+    background-color: #6c757d; /* Adjust the color to match your design */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 0 5px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.profile-button i {
+    margin-right: 5px;
+}
+
+.profile-button:hover {
+    background-color: #5a6268; /* Slightly darker shade on hover */
+}
+
+
+
+
+
+
+/* General styling for the gallery */
+.gallery {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.gallery-controls {
+    text-align: right;
+    margin-bottom: 10px;
+    justify-content: center;
+    display: flex;
+}
+
+.toggle-view-button {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 0 10px;
+}
+
+/* Grid container */
+.gallery-scroll {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Dynamically adjust columns */
+    gap: 20px; /* Space between the items */
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    justify-items: center;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* Single view for images and videos */
+.single-view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+/* Base size for single view images and videos */
+.single-view img,
+.single-view video {
+    width: 400px;
+    height: 400px;
+    object-fit: contain; /* Maintain aspect ratio in single view */
+    display: none;
+}
+
+/* Show the active item in single view */
+.single-view img.active,
+.single-view video.active {
+    display: block;
+}
+
+/* Multi-view size - fixed pixels based on screen size */
+.multi-view img,
+.multi-view video {
+    width: 200px; /* Default size for multi-view on small screens */
+    height: 200px;
+    object-fit: cover; /* Cover the entire box, even if it crops the video */
+    cursor: pointer;
+    margin: 0;
+}
+
+/* Media query for larger screens (greater than 768px) */
+@media (min-width: 768px) {
+    .gallery-scroll {
+        grid-template-columns: repeat(2, 1fr); /* Show 2 items per row */
+    }
+    
+    .multi-view img,
+    .multi-view video {
+        width: 250px; /* Larger size for multi-view */
+        height: 250px;
+    }
+}
+
+/* Media query for large screens (greater than 1024px) */
+@media (min-width: 1024px) {
+    .gallery-scroll {
+        grid-template-columns: repeat(3, 1fr); /* Show up to 3 items per row */
+    }
+
+    .single-view img,
+    .single-view video {
+        width: 600px; /* Larger size for single view on larger screens */
+        height: 600px;
+    }
+
+    .multi-view img,
+    .multi-view video {
+        width: 250px; /* Larger size for multi-view on larger screens */
+        height: 250px;
+    }
+}
+
+/* Media query for extra-large screens (greater than 1440px) */
+@media (min-width: 1440px) {
+    .gallery-scroll {
+        grid-template-columns: repeat(3, 1fr); /* Keep 3 items per row */
+    }
+
+    .single-view img,
+    .single-view video {
+        width: 800px; /* Extra large size for single view */
+        height: 800px;
+    }
+
+    .multi-view img,
+    .multi-view video {
+        width: 300px; /* Extra large size for multi-view */
+        height: 300px;
+    }
+}
+
+
+.overlay-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+.overlay-arrow {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.3s;
+    user-select: none;
+}
+
+.left-arrow {
+    left: 0;
+}
+
+.right-arrow {
+    right: 0;
+}
+
+.overlay-arrow:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
+.biography-container, .memory-wall-container, .tehilim-container {
+    background-color: #f5f5f5;
+}
+
+
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    z-index: 10; /* Ensure arrows appear above other elements */
+    border-radius: 50%; /* Round the corners for a button-like look */
+}
+
+.left-arrow {
+    left: 10px;
+}
+
+.right-arrow {
+    right: 10px;
+}
+
+.biography-container {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: right;
+}
+
+.biography-title {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #343a40;
+}
+
+#biographyText {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #495057;
+    direction: rtl;
+    text-align: right;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+.read-more-button {
+    background-color: rgba(44, 62, 80, 0.8);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 20px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.read-more-button i {
+    margin-right: 8px;
+}
+
+.memory-wall-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.memory-wall-title {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: right;
+    color: #343a40;
+}
+
+
+
+
+
+.write-memory-button {
+    padding: 12px 24px;
+    background-color: rgba(44, 62, 80, 0.8);
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin: 20px 0 0; /* Top margin to create space from content */
+    align-self: center; /* Center the button horizontally */
+    max-width: 200px; /* Limit the width for a centered look */
+    width: 100%; /* Ensure it doesn't exceed the container's width */
+    margin-bottom: 20px;
+}
+
+.write-memory-button:hover {
+    background-color: rgba(44, 62, 80, 1);
+    text-decoration: none;
+}
+
+.write-memory-button i {
+    margin-left: 8px;
+}
+
+.memory-entry {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: right;
+    position: relative;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+.memory-entry .memory-date {
+    font-size: 14px;
+    color: #6c757d;
+    margin-bottom: 10px;
+}
+
+.memory-entry p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #343a40;
+    margin-bottom: 10px;
+}
+
+.memory-entry .memory-author {
+    font-size: 16px;
+    font-weight: bold;
+    color: #343a40;
+    text-align: left;
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+}
+
+.memory-entry .memory-images {
+    display: flex;
+    justify-content: right;
+    margin-top: 15px;
+}
+
+.memory-entry .memory-images img {
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+    margin-left: 10px;
+    object-fit: cover;
+}
+
+.tehilim-container {
+    margin: 40px auto;
+    padding: 20px;
+    max-width: 1000px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: right; /* Align text to the right for Hebrew */
+    direction: rtl; /* Set the text direction to right-to-left */
+}
+
+.tehilim-container h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-align: center; /* Center the title */
+}
+
+.tehilim-section {
+    margin-bottom: 30px; /* Add space between sections */
+    padding-bottom: 10px; /* Add padding at the bottom of each section */
+    border-bottom: 2px solid #e0e0e0; /* Add a light border between sections */
+}
+
+.section-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007BFF; /* Add a distinct color to section titles */
+    margin-bottom: 10px;
+}
+
+.tehilim p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #343a40;
+    margin-bottom: 10px;
+}
+
+/* Initially hide the Tehilim text beyond the first few lines */
+.tehilim-more {
+    display: none;
+    margin-top: 20px;
+}
+
+
+
+.virtual-candles {
+    background-color: #ffffff; 
+    border-radius: 10px;
+    text-align: center; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    overflow-y: auto; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    padding-top: 20px; 
+    padding-bottom: 20px; 
+}
+
+.candles-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    flex-grow: 1; 
+    overflow-y: auto;
+    margin-bottom: 20px; 
+}
+
+.light-candle-button {
+    padding: 12px 24px;
+    background-color: rgba(44, 62, 80, 0.8);
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin: 20px 0 0; /* Top margin to create space from content */
+    align-self: center; /* Center the button horizontally */
+    max-width: 200px; /* Limit the width for a centered look */
+    width: 100%; /* Ensure it doesn't exceed the container's width */
+    margin-bottom: 20px;
+}
+
+.light-candle-button:hover {
+    background-color: rgba(44, 62, 80, 1);
+    text-decoration: none;
+}
+
+
+.top-right {
+    position: absolute; /* Ensure the container is positioned at the top right */
+    top: 10px;
+    right: 10px;
+    display: flex; /* Use flexbox for horizontal alignment */
+    gap: 10px; /* Adds space between the link and the button */
+    align-items: center; /* Aligns items vertically in the center */
+}
+
+.login-button, .logoutButton {
+    background-color: rgba(44, 62, 80, 0.8); /* Match the button color scheme */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    text-decoration: none; /* Removes underline from link */
+}
+
+.login-button:hover, .logoutButton:hover {
+    background-color: rgba(44, 62, 80, 1); /* Darken slightly on hover */
+}
+
+
+
+/* Modal Background */
+.custom-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Black with transparency */
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+/* Modal Content */
+.custom-modal-content {
+    background-color: #fff;
+    margin: auto;
+    padding: 20px;
+    border: none;
+    width: 90%;
+    max-width: 450px; /* Slightly smaller max-width for a cleaner look */
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+/* Modal Header */
+.custom-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+
+/* Close Button */
+.modal-close {
+    color: #666;
+    font-size: 20px;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+.modal-close:hover {
+    color: #333;
+}
+
+/* Modal Title */
+.custom-modal-header h2 {
+    font-size: 20px;
+    margin: 0;
+    float: center;
+    color: #333;
+}
+
+/* Modal Body */
+.custom-modal-body {
+    margin-top: 10px;
+    font-family: Arial, sans-serif;
+    padding-bottom: 20px; 
+
+}
+
+/* .custom-modal-footer {
+    margin-top: 60px;
+} */
+
+.custom-modal-body .form-group {
+    margin-bottom: 15px;
+}
+
+.custom-modal-body label {
+    direction: rtl;
+    float: right;
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: bold;
+}
+
+#memoryName{
+    margin-bottom: 20px;
+}
+
+/* Input and Textarea */
+.custom-modal-body input[type="text"],
+.custom-modal-body textarea {
+    direction: rtl;
+    float: right;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease;
+    font-family: Arial, sans-serif;
+
+}
+
+.custom-modal-body input[type="text"]:focus,
+.custom-modal-body textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.custom-modal-body textarea {
+    resize: none;
+}
+
+
+
+
+#memoryMessage{
+    margin-bottom: 20px;
+}
+
+
+
+
+.form-control {
+    width: 100%;
+    padding: 12px;
+    border-radius: 4px;
+    border: 1px solid #eaeaea;
+    margin-bottom: 15px;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.form-control:focus {
+    background-color: #ffffff;
+    border-color: #007bff;
+    outline: none;
+}
+
+
+.google-button {
+    display: block;
+    margin-bottom: 35px;
+    border-radius: 25px;
+    border: 2px solid #eee;
+    color: #777278;
+    font-size: 18px;
+    background-color: #fff !important;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border 0.3s ease-out;
+}
+
+.google-button:hover {
+    background-color: #f1f1f1;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.google-button svg {
+    margin-right: 5px;
+    width: 20px;
+    height: 20px;
+}
+
+
+
+.modal-button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 10px;
+}
+
+.modal-button.primary {
+    margin-top: 15px;
+    padding: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 25px;
+    background-color: #007bff;
+    color: #fff;
+    min-width: 145px;
+    font-size: 15px;
+    outline: 0;
+    border: none;
+    max-height: 47px;
+}
+
+.modal-button:hover {
+    transform: translateY(-2px);
+}
+
+.signup-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.signup-container a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease-in-out;
+}
+
+.signup-container a:hover {
+    color: #007bff;
+}
+
+.login-forgot-password {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #a1a5a8; 
+    cursor: pointer;
+    text-align: center;
+    transition: color 0.2s ease-in-out;
+}
+
+
+
+/* Error Message */
+.form-error {
+    color: red;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px;
+    border-top: 1px solid #e5e5e5;
+    border-radius: 0 0 10px 10px;
+} */
+
+/* .modal-footer button {
+    padding: 10px 20px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+} */
+
+/* .modal-footer button#saveMemoryButton {
+    background-color: #007bff;
+    color: white;
+}
+
+.modal-footer button#saveMemoryButton:hover {
+    background-color: #0056b3;
+}
+
+.modal-footer button#closeMemoryButton {
+    background-color: #6c757d;
+    color: white;
+}
+
+.modal-footer button#closeMemoryButton:hover {
+    background-color: #5a6268;
+} */
+
+
+.custom-modal-login {
+    display: block;
+    position: fixed;
+    z-index: 1000;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 400px;
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    font-family: 'Arial', sans-serif;
+}
+
+.custom-modal-login-header {
+    padding: 15px;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.custom-modal-login-header h2 {
+    margin: 0;
+    font-size: 18px;
+    text-align: right;
+}
+
+.modal-close {
+    float: left;
+    font-size: 24px;
+    cursor: pointer;
+    color: #888;
+}
+
+.custom-modal-login-body {
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: right;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    direction: rtl;
+    text-align: right;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-button {
+    flex: 1;
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.modal-button.google {
+    background-color: #db4437;
+    color: white;
+}
+
+.modal-button:hover {
+    opacity: 0.9;
+}
+
+.modal-button:focus {
+    outline: none;
+}
+
+@media (max-width: 480px) {
+    .custom-modal-content {
+        width: 90%;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .modal-button {
+        margin: 5px 0;
+    }
+}
+
+/* Ensuring the modal is hidden by default */
+#loginModal {
+    display: none;
+}
+
+
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: block;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 9999;
+    font-size: 24px; /* Adjust icon size */
+    width: 50px; /* Adjust width for a circle */
+    height: 50px; /* Adjust height for a circle */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.example-notice {
+    color: rgba(255, 255, 255, 0.8); /* Subtle white color */
+    font-size: 12px; /* Small font size */
+    font-weight: bold;
+    text-align: center;
+    position: absolute;
+    top: 20px; /* Adjust this to control vertical positioning */
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+    z-index: 2; /* Ensure it appears above the background */
+}
+
+/* Gallery styling for images and videos */
+.gallery-scroll video {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 100%    !important;
+    height: auto !important;
+    max-width: 600px;
+    max-height: 600px;
+    object-fit: contain; /* Prevents cropping, preserving the aspect ratio */
+    /* display: block; */
+    margin: 0 auto; /* Center the media within the gallery */
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); Optional: add a shadow effect */
+    border-radius: 8px; /* Optional: add rounded corners */
+}
+
+.translate-button {
+    display: inline-block;
+    background-color: #f0f0f0;
+    border: none;
+    color: #333;
+    font-size: 12px;
+    padding: 5px;
+    cursor: pointer;
+    margin-left: 5px;
+    border-radius: 3px;
+}
+
+.translate-btn {
+    display: none;             /* Hide button by default */
+    background: none;
+    border: none;
+    color: #333;               /* Dark gray for an elegant, subtle look */
+    cursor: pointer;
+    padding: 0;
+    font-size: 14px;
+    font-weight: 500;          /* Lighter font weight for a less "blocky" feel */
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+}
+
+.translate-btn:hover {
+    background-color: #f0f0f0; /* Very light gray on hover for a gentle effect */
+    border-radius: 4px;        /* Rounded corners for a softer look */
+    padding: 2px 4px;          /* Subtle padding to enhance the button feel on hover */
+}
+
+.translate-btn:focus {
+    outline: none;             /* Removes outline when focused */
+}
+
+/* Bottom Row Styling */
+.footer-bottom {
+    background-color: #3A434A; /* Darker bottom row */
+    padding: 20px 0; /* Increased padding for height */
+    font-size: 16px; /* Increased font size for readability */
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.footer-bottom p {
+    display: inline-flex;
+    gap: 10px; /* Space between items */
+    align-items: center;
+    color: #FFFFFF;
+    margin: 0;
+}
+
+.footer-bottom a {
+    color: #87BFBF; /* Link color */
+    text-decoration: none;
+    font-size: 16px; /* Ensure link font size matches */
+}
+
+.footer-bottom a:hover {
+    text-decoration: underline;
+}
+
+
+
+.background-buttons {
+    position: absolute;
+    top: 10px; /* Adjust this value to fine-tune vertical positioning */
+    left: 10px; /* Position it on the left side of the background image */
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    z-index: 10; /* Ensure it's on top of other elements */
+  }
+  
+  .language-btn, .back-btn {
+    background-color: #ffffff;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .language-btn:hover, .back-btn:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .flag-icon {
+    width: 24px;
+    height: auto;
+  }
+  
+  .back-btn {
+    font-size: 24px; /* Back symbol size */
+  }
+  
